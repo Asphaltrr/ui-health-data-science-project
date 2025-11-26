@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   BarChart3,
   Brain,
@@ -9,7 +9,7 @@ import {
   History,
   LayoutDashboard,
   ShieldCheck,
-} from "lucide-react"
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -26,28 +26,29 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarSeparator,
-} from "@/components/ui/sidebar"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/sidebar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const navItems = [
   {
-    title: "Dashboard",
+    title: "Tableau de bord",
     href: "/dashboard",
     icon: LayoutDashboard,
   },
   {
-    title: "Predict",
+    title: "Prédiction",
     href: "/dashboard/predict",
     icon: Brain,
   },
   {
-    title: "Explain",
+    title: "Explication",
     href: "/dashboard/explain",
     icon: Gauge,
   },
   {
-    title: "History",
+    title: "Historique",
     href: "/dashboard/history",
     icon: History,
   },
@@ -56,22 +57,20 @@ const navItems = [
     href: "/dashboard/monitoring",
     icon: BarChart3,
   },
-]
+];
 
 export function AppSidebar({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <SidebarProvider>
       <Sidebar variant="inset" collapsible="icon" className="border-r">
         <SidebarHeader className="gap-3">
           <div className="flex items-center gap-2 px-2">
-            <div className="bg-primary text-primary-foreground flex size-9 items-center justify-center rounded-xl shadow-sm">
-              <Brain className="size-5" />
-            </div>
+            <Image alt="logo-afor" src="/logo.png" width={40} height={40} />
             <div className="flex flex-col">
               <span className="text-sm font-semibold leading-tight">
-                Afor Health
+                AFORINNOV
               </span>
               <span className="text-xs text-muted-foreground">
                 Modèle clinique
@@ -98,8 +97,8 @@ export function AppSidebar({ children }: { children: React.ReactNode }) {
                   const active =
                     item.href === "/dashboard"
                       ? pathname === "/dashboard"
-                      : pathname.startsWith(item.href)
-                  const Icon = item.icon
+                      : pathname.startsWith(item.href);
+                  const Icon = item.icon;
                   return (
                     <SidebarMenuItem key={item.href}>
                       <SidebarMenuButton
@@ -113,7 +112,7 @@ export function AppSidebar({ children }: { children: React.ReactNode }) {
                         </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
-                  )
+                  );
                 })}
               </SidebarMenu>
             </SidebarGroupContent>
@@ -128,5 +127,5 @@ export function AppSidebar({ children }: { children: React.ReactNode }) {
       </Sidebar>
       <SidebarInset className="bg-background">{children}</SidebarInset>
     </SidebarProvider>
-  )
+  );
 }
