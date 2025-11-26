@@ -7,7 +7,7 @@ import {
 } from "./types"
 import { type PatientFormValues } from "./patient"
 
-export const API_URL = "http://localhost:8000"
+export const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 async function handleResponse<T>(res: Response): Promise<T> {
   if (!res.ok) {
