@@ -55,6 +55,7 @@ export type PatientField =
       type: "number"
       helper?: string
       step?: number
+      placeholder?: string
     }
   | {
       name: keyof PatientFormValues

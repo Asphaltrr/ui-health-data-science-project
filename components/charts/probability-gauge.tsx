@@ -35,8 +35,10 @@ export function ProbabilityGauge({ survival, death }: ProbabilityGaugeProps) {
           background
           dataKey="value"
           cornerRadius={10}
-          clockWise
-          label={({ value, name }) => `${name} ${value.toFixed(0)}%`}
+          label={{
+            content: ({ value, name }) =>
+              `${name ?? ""} ${Number(value ?? 0).toFixed(0)}%`,
+          }}
         />
       </RadialBarChart>
     </div>
